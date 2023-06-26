@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
     /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
-    "target": "es6",                                  
+    "target": "es2017",
     /* Modules */
-    "module": "commonjs",                                /* Specify what module code is generated. */
+    "module": "commonJS",                                /* Specify what module code is generated. */
     "baseUrl": "./src",
     "moduleResolution": "node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
     /* JavaScript Support */
@@ -24,3 +24,4 @@
     "node_modules"
   ],
 }
+
