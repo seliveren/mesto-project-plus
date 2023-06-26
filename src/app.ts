@@ -6,10 +6,11 @@ const userRoute = require('./routes/users');
 const cardRoute = require('./routes/cards');
 
 const { PORT = 3000 } = process.env;
+const { DB = 'mongodb://localhost:27017/mestodb' } = process.env;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect(DB);
 
 app.use(authMiddleware);
 app.use(express.json());

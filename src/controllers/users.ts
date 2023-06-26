@@ -10,7 +10,7 @@ export const findAllUsers = (req: Request, res: Response) => {
       if (err.name === '404 Not Found') {
         return res.status(notFoundError).send({ message: 'Запрашиваемые пользователи не найдены' });
       }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
 
@@ -26,7 +26,7 @@ export const findUserById = (req: IUserAuthInfoRequest, res: Response) => {
       if (err.name === '404 Not Found') {
         return res.status(notFoundError).send({ message: 'Пользователь по указанному _id не найден' });
       }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
 
@@ -38,7 +38,7 @@ export const createUser = (req: Request, res: Response) => {
       if (err.name === '400 Bad Request') {
         return res.status(incorrectInputError).send({ message: 'Переданы некорректные данные при создании пользователя' });
       }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
 
@@ -58,7 +58,7 @@ export const editProfile = (req: IUserAuthInfoRequest, res: Response) => {
       } if (err.name === '404 Not Found') {
         return res.status(notFoundError).send({ message: 'Пользователь с указанным _id не найден' });
       }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
 
@@ -78,6 +78,6 @@ export const editAvatar = (req: IUserAuthInfoRequest, res: Response) => {
       } if (err.name === '404 Not Found') {
         return res.status(notFoundError).send({ message: 'Пользователь с указанным _id не найден' });
       }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };

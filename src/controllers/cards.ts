@@ -8,7 +8,7 @@ export const findAllCards = (req: Request, res: Response) => {
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === '404 Not Found') { return res.status(notFoundError).send({ message: 'Запрашиваемые карточки не найдены' }); }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
 
@@ -22,7 +22,7 @@ export const createCard = (req: IUserAuthInfoRequest, res: Response) => {
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === '400 Bad Request') { return res.status(incorrectInputError).send({ message: 'Переданы некорректные данные при создании карточки' }); }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
 
@@ -31,7 +31,7 @@ export const deleteCard = (req: Request, res: Response) => {
     .then((card) => res.send({ data: card }))
     .catch((err) => {
       if (err.name === '404 Not Found') { return res.status(notFoundError).send({ message: 'Карточка с указанным _id не найдена' }); }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
 
@@ -49,7 +49,7 @@ export const likeCard = (req: IUserAuthInfoRequest, res: Response) => {
       if (err.name === '404 Not Found') {
         return res.status(notFoundError).send({ message: 'Передан несуществующий _id карточки' });
       }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
 
@@ -67,6 +67,6 @@ export const dislikeCard = (req: IUserAuthInfoRequest, res: Response) => {
       if (err.name === '404 Not Found') {
         return res.status(notFoundError).send({ message: 'Передан несуществующий _id карточки' });
       }
-      return res.status(defaultError).send({ message: 'Ошибка со стороны сервера' });
+      return res.status(defaultError).send({ message: 'На сервере произошла ошибка' });
     });
 };
