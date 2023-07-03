@@ -2,7 +2,7 @@ import jwt from 'jsonwebtoken';
 import { Response, NextFunction } from 'express';
 import { IUserAuthInfoRequest } from '../interfaces/IUserAuthInfoRequest';
 import { IJwt } from '../interfaces/IJwt';
-import { unauthorizedError } from '../constants/constants';
+import { SECRETKEY, unauthorizedError } from '../constants/constants';
 
 export default (req: IUserAuthInfoRequest, res: Response, next: NextFunction) => {
   const { authorization } = req.headers;
@@ -17,7 +17,7 @@ export default (req: IUserAuthInfoRequest, res: Response, next: NextFunction) =>
   let payload: IJwt | null;
 
   try {
-    payload = jwt.verify(token, 'some-secret-key') as IJwt;
+    payload = jwt.verify(token, SECRETKEY) as IJwt;
   } catch (err) {
     return res
       .status(unauthorizedError)
