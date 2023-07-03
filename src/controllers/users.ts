@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import { IUserAuthInfoRequest } from '../interfaces/IUserAuthInfoRequest';
 import { IUser } from '../interfaces/IUser';
-import { incorrectInputError } from '../constants/constants';
+import { incorrectInputError, SECRETKEY } from '../constants/constants';
 
 const NotFoundError = require('../errors/not-found-err');
 const UnauthorizedError = require('../errors/unauthorized-err');
@@ -127,7 +127,7 @@ export const login = (req: Request, res: Response, next: NextFunction) => {
       if (!user) {
         throw new UnauthorizedError('Необходима авторизация');
       }
-      const token = jwt.sign({ _id: user._id }, 'some-secret-key', { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, SECRETKEY, { expiresIn: '7d' });
       res.send({ token });
     })
     .catch(next);
